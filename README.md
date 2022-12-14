@@ -1,2 +1,10 @@
 # DL-Road-Sign-CV
-Group project for DAT 255 at SJSU
+Group project for DATA 255 at SJSU
+
+With the rise of advanced driver assistance systems (ADAS) and self-driving vehicles, the need for computer vision to quickly detect and classify traffic signs has increased. There are several challenges in processing traffic sign images in-luding blurring, warping, and full or partial obstruction. Haloi (2015) proposed a convolutional neural network (CNN) model for classification of the German Traffic Sign Recognition Benchmark (GTSRB) dataset. GTSRB has more than 50,000 images with 43 classes (found here: https://benchmark.ini.rub.de/gtsrb dataset.html). The annotated images depict various target road signs in 3 channel color with varying size in pixel dimensions and brightness.
+
+For our project, we have reconstructed Haloi’s model as a baseline, improved the baseline model performance by adding Bayesian inference, and implemented the following five transfer learning models for comparison: VGG16, ResNet50, GoogleNet(inceptionV3), MobileNet, EfficientNet, and Vision Transformer. We compared the test accuracy for all these models with hyperparameters tuning via Bayesian optimization and some without tuning on both the full test dataset and a subset of 50 blurry images from the test dataset.
+
+After comparing several models, the modified Haloi (96%, 100% blurry) and Haloi with Bayesian inference (95%, 96% blurry) performed best. The Vision Transformer (95% untuned, 82%, 90% blurry) was the best performance transfer learning model while Efficient Net (10% untuned, 2%, 0% blurry) was
+the worst. Other transfer learning models without tuning has 60-80% accuracy, and tuning caused some model performance to decrease by 13-58% and increase by 2-3%. The significant decrease in performance after tuning for the VGG16 and ResNet50 models may have been cause by discrepancies in
+early stopping hyperparameters, learning rate being too high, and the selection of SGD with momentum as the optimizer by the tuner. These possibilities warrant further research.
